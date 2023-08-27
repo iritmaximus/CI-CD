@@ -25,6 +25,8 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: check if contains skip
+        run: echo ${{ contains("#skip", COMMIT_MESSAGES)}}
 
   QA-checks:
     runs-on: ubuntu-20.04
