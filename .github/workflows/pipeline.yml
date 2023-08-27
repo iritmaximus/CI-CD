@@ -27,7 +27,7 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
       - name: check if contains skip
         env:
-          CHECK: ${{ contains("\#skip", COMMIT_MESSAGES)}}
+          CHECK: ${{ contains('#skip', COMMIT_MESSAGES)}}
         run: echo "$CHECK"
 
   QA-checks:
