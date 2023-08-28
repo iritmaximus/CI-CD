@@ -25,10 +25,6 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
-      - name: check if contains skip
-        env:
-          CHECK: ${{ contains('#skip', toJson(github.event.commits.*.message))}}
-        run: echo "$CHECK"
 
   QA-checks:
     runs-on: ubuntu-20.04
@@ -57,6 +53,7 @@ jobs:
     name: Deploy app
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'push' }}
+    if: "!contains('#skip', toJson(github.event.commits.*.message))"
     steps:
       - uses: actions/checkout@v3
       - uses: superfly/flyctl-actions/setup-flyctl@master
