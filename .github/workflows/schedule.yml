@@ -3,7 +3,8 @@ name: Periodic url check
 on:
   push:
     branches:
-      - [main, schedule-test]
+      - main
+      - schedule-test
   pull_request:
     branches: [main]
     types: [opened, synchronize]
