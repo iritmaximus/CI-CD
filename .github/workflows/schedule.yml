@@ -2,7 +2,7 @@ name: Periodic url check
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '* * * * *'
 
 jobs:
   test_schedule:
